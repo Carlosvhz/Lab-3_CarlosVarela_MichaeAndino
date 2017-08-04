@@ -6,8 +6,6 @@
 package laboratorio.pkg3;
 
 import java.awt.Color;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -16,11 +14,12 @@ import java.util.*;
  */
 public class Laboratorio3 {
 
-    static int simulacion, opcion;
+    static int simulacion, opcion, altura, garras, vida;
     static Scanner sc = new Scanner(System.in);
     static ArrayList<integrantes> integ = new ArrayList();
     static Pueblos p = new Pueblos();
     static Random rn = new Random();
+    static String nombre, apellido, raza, respuesta, cantidad;
 
     /**
      * @param args the command line arguments
@@ -49,21 +48,28 @@ public class Laboratorio3 {
                 añadir();
                 break;
             case 2:
-
+                System.out.println("-- Eliminar --");
+                if (p.integrantes.size() > 0) {
+                    System.out.println("¿Que integrante desea eliminar?");
+                    opcion = sc.nextInt();
+                    while (opcion < 0 || opcion > p.integrantes.size()) {
+                        System.out.print("... Ingrese numero de usuarios existentes: ");
+                        opcion = sc.nextInt();
+                    }
+                    p.integrantes.remove(opcion);
+                } else {
+                    System.out.println("... No hay integrantes para eliminar");
+                }
                 break;
             case 3:
-
+                System.out.println("-- Modificar --");
+                modificar();
                 break;
             case 4:
-
+                System.out.println("... No realizado :(");
                 break;
             case 5:
-
-                break;
-            case 6:
-
-                break;
-            default:
+                System.out.println("... No realizado :(");
                 break;
         }
     }
@@ -77,8 +83,9 @@ public class Laboratorio3 {
         System.out.print("... Añadiendo bestia\n"
                 + "- Ingrese numero de garras: ");
         garras = sc.nextInt();
-        System.out.print("- Ingrese vida:");
+        //Holis
         vida = rn.nextInt(101) + 50;
+        System.out.print("- Ingrese vida: "+vida);
         System.out.print("- Sera venenoso? [s/n]:");
         while (sc.next().toLowerCase().charAt(0) == 's') {
             venenoso = true;
@@ -234,8 +241,40 @@ public class Laboratorio3 {
                 }
                 System.out.println("  ¡Integrante añadido!  ");
                 break;
-            case 5:
+            case 5://Copiar
+                System.out.print("¿Tendra Baston?[Si/No]: ");
+                respuesta = sc.next();
+                if (respuesta.equalsIgnoreCase("Si")) {
+                    p.integrantes.add(new Raza("Maiar", "Baston", nombre, apellido, altura, fecha, b, 0, 0, 0, 0));
+                } else {
+                    System.out.print("¿Tendra Sombrero?[Si/No]: ");
+                    respuesta = sc.next();
+                    if (respuesta.equalsIgnoreCase("Si")) {
+                        p.integrantes.add(new Raza("Maiar", "Sombrero", nombre, apellido, altura, fecha, b, 0, 0, 0, 0));
+                    } else {
+                        p.integrantes.add(new Raza("Maiar", "", nombre, apellido, altura, fecha, b, 0, 0, 0, 0));
+                    }
+                }
                 break;
+        }
+    }
+
+    public static void modificar() {
+        int cual;
+
+        if (p.integrantes.size() > 0) {
+            System.out.println("... Listado de integrantes\n");
+            for (integrantes object : integ) {
+                System.out.println(object);
+            }
+            System.out.print("Ingrese el numero de integrante a modificar: ");
+            cual = sc.nextInt();
+            while (cual < 0 || cual > p.integrantes.size()) {
+                System.out.println("... Ingrese solamente posiciones existentes. ");
+            }
+            System.out.print("- Ingrese nombre: ");
+            nombre = sc.next();
+            p.integrantes.get(cual).setNombre(nombre);
         }
     }
 }
