@@ -1,94 +1,95 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package laboratorio.pkg3;
 
 import java.util.*;
 
-/**
- *
- * @author carlo
- */
-public class Raza extends integrantes{
+public class Raza extends integrantes {
     
-    private String tipo, arma, accesorio;
-    private int poder, curacion, defensa;
-    public Raza(String tipo) {
-        this.tipo = tipo;
+    private String tipo, arma;
+    private ArrayList<String> accesorio = new ArrayList();
+    private Raza hermano;
+    private boolean hermanoya;
+    public Raza() {
     }
-
-    public Raza(int vida, int curacion, int defensa, String nombre, String apellido, int Altura, Date fecha,/* Bestia bestia,*/ Raza raza, String accesorio) {
-        super(nombre, apellido, Altura, fecha, raza);
-        this.poder = poder;
-        this.curacion = curacion;
-        this.defensa = defensa;
-        this.accesorio = accesorio;
+    
+    public Raza(String tipo, String arma, String nombre, String apellido, int Altura, Date fecha, Bestia bestia, int poder, int curacion, int defensa, int vida) {
+        super(nombre, apellido, Altura, fecha, bestia, poder, curacion, defensa, vida);
+        this.tipo = tipo;
+        this.arma = arma;
         AsignarAtributosBasicos();
     }
-
+    
     public void setArma(String arma) {
         this.arma = arma;
     }
-
+    
     public void setAccesorio(String accesorio) {
-        this.accesorio = accesorio;
+        this.accesorio.add(accesorio);
     }
-
+    
     public String getTipo() {
         return tipo;
     }
-
+    
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
-    public int getpoder() {
-        return poder;
-    }
-
-    public void setpoder(int poder) {
-        this.poder = poder;
-    }
-
-    public int getCuracion() {
-        return curacion;
-    }
-
-    public void setCuracion(int curacion) {
-        this.curacion = curacion;
-    }
-
-    public int getDefensa() {
-        return defensa;
-    }
-
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
     
-    public void AsignarAtributosBasicos(){
-        if (tipo.equals("Elfos")) {
-            this.curacion = 335;
-            this.defensa = 150;
-            this.poder = 443;
-        }if (tipo.equals("Enanos")) {
-            this.curacion = 50;
-            this.defensa = 200;
-            this.poder = 300;
-        }if (tipo.equals("Hobbit")) {
-            this.curacion = 1;
-            this.defensa = 100;
-            this.poder = 10;  
-        }if (tipo.equals("Hombres")) {
-            this.curacion = 50;
-            this.defensa = 140;
-            this.poder = 150;
-        }if (tipo.equals("Maiar")) {
-            this.defensa = 0;
-            if (accesorio.equalsIgnoreCase("Sombrero")) {
-                
+    public void AsignarAtributosBasicos() {
+        if (tipo.equals("Elfo")) {
+            curacion += 335;
+            defensa += 150;
+            poder += 443;
+            if (arma.equals("Si")) {
+                curacion += 10;
+                defensa += 10;
+                poder += 10;
+            }
+        }
+        if (tipo.equals("Enano")) {
+            this.curacion += 50;
+            this.defensa += 200;
+            this.poder += 300;
+            if (accesorio.get(0).equals("Barba")) {
+                this.curacion += 50;
+                this.defensa += 50;
+                this.poder += 50;
+            }
+            if (arma.equals("Hacha")) {
+                this.poder += 50;
+            }
+        }
+        if (tipo.equals("Hobbit")) {
+            this.curacion += 1;
+            this.defensa += 100;
+            this.poder += 10;
+            for (String string : accesorio) {
+                if (string.equals("Anillo")) {
+                    this.curacion += 40;
+                    this.defensa += 40;
+                    this.poder += 40;
+                }
+            }
+        }
+        if (tipo.equals("Hombre")) {
+            this.curacion += 50;
+            this.defensa += 140;
+            this.poder += 150;
+            if (arma.equals("Espada")) {
+                this.poder += 150;
+            }else if (arma.equals("Lanza")){
+                this.poder += 100;
+            }else if(arma.equals("arco")){
+                this.poder += 100;
+            }
+        }
+        if (tipo.equals("Maiar")) {
+            if (accesorio.get(0).equals("Sombrero")) {
+                this.curacion+=200;
+                this.poder+=200;
+            }
+            if (arma.equals("Baston")) {
+                this.curacion+=250;
+                this.poder+=200;                
             }
         }
     }
