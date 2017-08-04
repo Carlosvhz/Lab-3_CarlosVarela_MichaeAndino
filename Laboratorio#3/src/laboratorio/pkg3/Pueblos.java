@@ -12,7 +12,7 @@ public class Pueblos {
         return integrantes;
     }
 
-    public void setIntegrantes(ArrayList<integrantes> integrantes) {
-        this.integrantes = integrantes;
+    public void setIntegrantes(integrantes integrantes) {
+        this.integrantes.add(integrantes);
     }    
 }

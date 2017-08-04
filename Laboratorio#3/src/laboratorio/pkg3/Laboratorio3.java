@@ -21,6 +21,10 @@ public class Laboratorio3 {
         //DateFormat df = SimpleDateFormat("yyyy/MM/dd");
         System.out.println("Carlos sos guapo.");
         System.out.println("Hola pinche putita");
+        Date fecha = new Date();
+        Pueblos p = new Pueblos();
+        p.setIntegrantes(new Raza("Hombre", "Nada", "Nada", "Putin", "x'D", 1, fecha));
+        System.out.println( ((Raza)p.getIntegrantes().get(0)).getCuracion() );
     }
     
 }

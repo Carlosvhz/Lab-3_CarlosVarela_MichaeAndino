@@ -15,18 +15,21 @@ public class Raza extends integrantes{
     
     private String tipo, arma, accesorio;
     private int poder, curacion, defensa;
-    public Raza(String tipo) {
-        this.tipo = tipo;
-    }
 
-    public Raza(int vida, int curacion, int defensa, String nombre, String apellido, int Altura, Date fecha,/* Bestia bestia,*/ Raza raza, String accesorio) {
-        super(nombre, apellido, Altura, fecha, raza);
-        this.poder = poder;
-        this.curacion = curacion;
-        this.defensa = defensa;
+    public Raza(String tipo, String arma, String accesorio, String nombre, String apellido, int Altura, Date fecha) {
+        super(nombre, apellido, Altura, fecha);
+        this.tipo = tipo;
+        this.arma = arma;
         this.accesorio = accesorio;
         AsignarAtributosBasicos();
     }
+
+    
+
+    public void setRaza(String tipo) {
+        this.tipo = tipo;
+    }
+
 
     public void setArma(String arma) {
         this.arma = arma;
@@ -81,7 +84,7 @@ public class Raza extends integrantes{
             this.curacion = 1;
             this.defensa = 100;
             this.poder = 10;  
-        }if (tipo.equals("Hombres")) {
+        }if (tipo.equals("Hombre")) {
             this.curacion = 50;
             this.defensa = 140;
             this.poder = 150;

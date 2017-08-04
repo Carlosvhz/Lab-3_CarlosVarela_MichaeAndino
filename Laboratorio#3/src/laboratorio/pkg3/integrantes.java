@@ -10,22 +10,23 @@ import java.util.*;
  * @author carlo
  */
 public class integrantes {
-    private String nombre, apellido;
-    private int Altura;
-    private Date fecha;
+    protected String nombre, apellido;
+    protected int Altura, poder, curacion, defensa;
+    protected Date fecha;
     /*private Bestia bestia;*/
-    private Raza raza;
+    protected Raza raza;
     
-    public integrantes() {
+    public integrantes(Raza raza) {
+        this.raza = raza;
     }
 
-    public integrantes(String nombre, String apellido, int Altura, Date fecha, Raza raza) {
+    //Bestia agregar despues.
+    public integrantes(String nombre, String apellido, int Altura, Date fecha) {
         //this.bestia = bestia;
         this.nombre = nombre;
         this.apellido = apellido;
         this.Altura = Altura;
         this.fecha = fecha;
-        this.raza = raza;
     }
 
     public String getNombre() {
