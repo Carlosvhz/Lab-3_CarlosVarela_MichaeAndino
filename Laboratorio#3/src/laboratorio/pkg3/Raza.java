@@ -26,8 +26,8 @@ public class Raza extends integrantes{
 
     
 
-    public void setRaza(String tipo) {
-        this.tipo = tipo;
+    public String getRaza() {
+       return tipo;
     }
 
 
@@ -72,11 +72,17 @@ public class Raza extends integrantes{
     }
     
     public void AsignarAtributosBasicos(){
-        if (tipo.equals("Elfos")) {
-            this.curacion = 335;
-            this.defensa = 150;
-            this.poder = 443;
-        }if (tipo.equals("Enanos")) {
+        if (tipo.equals("Elfo")) {
+            if (arma.equalsIgnoreCase("Si")) {
+                this.curacion = 335+10;
+                this.defensa = 150+10;
+                this.poder = 443+10;
+            }else{
+                this.curacion = 335;
+                this.defensa = 150;
+                this.poder = 443;
+            }
+        }if (tipo.equals("Enano")) {
             this.curacion = 50;
             this.defensa = 200;
             this.poder = 300;

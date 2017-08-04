@@ -13,13 +13,8 @@ public class integrantes {
     protected String nombre, apellido;
     protected int Altura, poder, curacion, defensa;
     protected Date fecha;
-    /*private Bestia bestia;*/
-    protected Raza raza;
+    protected Bestia bestia;
     
-    public integrantes(Raza raza) {
-        this.raza = raza;
-    }
-
     //Bestia agregar despues.
     public integrantes(String nombre, String apellido, int Altura, Date fecha) {
         //this.bestia = bestia;
@@ -68,15 +63,6 @@ public class integrantes {
     public void setBestia(Bestia bestia) {
         this.bestia = bestia;
     }*/
-
-    public Raza getRaza() {
-        return raza;
-    }
-
-    public void setRaza(Raza raza) {
-        this.raza = raza;
-    }
-    
     
     
 }
