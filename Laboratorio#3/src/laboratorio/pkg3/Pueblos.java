@@ -1,6 +1,7 @@
 package laboratorio.pkg3;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Pueblos {
     
@@ -12,7 +13,7 @@ public class Pueblos {
         return integrantes;
     }
 
-    public void setIntegrantes(integrantes integrantes) {
-        this.integrantes.add(integrantes);
+    public void setIntegrantes(Raza raza) {
+        this.integrantes.add(raza);
     }    
 }
