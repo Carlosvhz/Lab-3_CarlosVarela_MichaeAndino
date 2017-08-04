@@ -5,28 +5,30 @@
  */
 package laboratorio.pkg3;
 
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 /**
  *
  * @author Elizabeth
  */
 public class Laboratorio3 {
 
-
     static int simulacion, opcion;
     static Scanner sc = new Scanner(System.in);
     static ArrayList<integrantes> integ = new ArrayList();
     static Pueblos p = new Pueblos();
     static Random rn = new Random();
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         //DateFormat df = SimpleDateFormat("yyyy/MM/dd");
         do {
-            
+
             System.out.print("______Lab#3_____\n"
                     + "1. Añadir integrantes\n"
                     + "2. Eliminar integrantes\n"
@@ -37,45 +39,128 @@ public class Laboratorio3 {
                     + "Ingrese opcion: ");
             opcion = sc.nextInt();
             menu(opcion);
-        } while (opcion<6);
+        } while (opcion < 6);
     }
-    
-    static public void menu(int simulacion){
+
+    static public void menu(int simulacion) {
         switch (opcion) {
             case 1:
                 System.out.println("-- Añadir integrantes --");
                 añadir();
                 break;
             case 2:
-                
+
                 break;
             case 3:
-                
-                break;   
+
+                break;
             case 4:
-                
+
                 break;
             case 5:
-                
+
                 break;
             case 6:
-                
+
                 break;
             default:
                 break;
         }
     }
-    
-    static public void añadir(){
+
+    static public void añadir() {
         String nombre, apellido, raza, respuesta, cantidad;
         int altura, garras, vida;
+        boolean venenoso = false;
         Date fecha = new Date();
-        Bestia bestia = new Bestia();
+        Bestia b = new Bestia();
         System.out.print("... Añadiendo bestia\n"
                 + "- Ingrese numero de garras: ");
         garras = sc.nextInt();
         System.out.print("- Ingrese vida:");
-        vida = sc.nextInt();
+        vida = rn.nextInt(101) + 50;
+        System.out.print("- Sera venenoso? [s/n]:");
+        while (sc.next().toLowerCase().charAt(0) == 's') {
+            venenoso = true;
+        }
+        System.out.print("¿Que raza sera su integrante?\n"
+                + "1. Aguillas\n"
+                + "2. Arañas\n"
+                + "3. Balrogs\n"
+                + "4. Bestias Aladas\n"
+                + "5. Dragon\n"
+                + "Ingrear opcion: ");
+        int tipo = sc.nextInt();
+        while (tipo < 1 || tipo > 5) {
+            System.out.print("... Ingrese solo opciones validas: ");
+            opcion = sc.nextInt();
+        }
+        switch (tipo) {
+            case 1:
+                Color c=Color.BLACK;
+                System.out.print("¿Que color le dara al plumaje?\n"
+                        + "1. Blanco\n"
+                        + "2. Negro\n"
+                        + "3. Rojo\n"
+                        + "Ingrear opcion: ");
+                int color = sc.nextInt();
+                while (color < 1 || color > 3) {
+                    System.out.print("... Ingrese solo opciones validas: ");
+                    color = sc.nextInt();
+                }
+                switch (color) {
+                    case 1:
+                        c=Color.WHITE;
+                        break;
+                    case 2:
+                        c=Color.BLACK;
+                        break;
+                    case 3:
+                        c=Color.RED;
+                        break;
+                }
+                b=new Aguilas(c, garras, venenoso, vida);
+                break;
+            case 2:
+                char sexo='b';
+                System.out.print("¿Que sexo tendra la araña?\n"
+                        + "2. Masculino\n"
+                        + "2. Femenino\n"
+                        + "Ingrear opcion: ");
+                int arañon=sc.nextInt();
+                while (arañon < 1 || arañon > 2) {
+                    System.out.print("... Ingrese solo opciones validas: ");
+                    arañon = sc.nextInt();
+                }
+                switch (arañon) {
+                    case 1:
+                        sexo='♂';
+                        break;
+                    case 2:
+                        sexo='♀';                        
+                        break;
+                }
+                b=new Arañas(sexo, garras, venenoso, vida);
+                break;
+            case 3:
+                boolean latigo=false;
+                System.out.print("Desea añadirle un latigo? [s/n]: ");
+                if (sc.next().toLowerCase().charAt(0)=='s') {
+                    latigo=true;
+                }
+                b=new Balrogs(latigo, garras, venenoso, vida);
+                break;
+            case 4:
+                System.out.print("Ingrese su velocidad m/s: ");
+                int velocidad=sc.nextInt();
+                b= new Aladas(velocidad, garras, venenoso, vida);
+                break;
+            case 5:
+                System.out.print("Ingrese la longitud de alas: ");
+                int longitud=sc.nextInt();
+                b= new Dragones(longitud, garras, venenoso, vida);
+                break;
+        }
         //Asignar bestia
         System.out.print("- Añadir nombre: ");
         nombre = sc.next();
@@ -84,7 +169,7 @@ public class Laboratorio3 {
         System.out.print("- Añadir altura: ");
         altura = sc.nextInt();
         System.out.print("- Añadir fecha: \n");
-        
+
         System.out.print("¿Que raza sera su integrante?\n"
                 + "1. Elfo\n"
                 + "2. Enano\n"
@@ -93,34 +178,64 @@ public class Laboratorio3 {
                 + "5. Maiar\n"
                 + "Ingrear opcion: ");
         opcion = sc.nextInt();
-        while(opcion<0||opcion>5){
+        while (opcion < 0 || opcion > 5) {
             System.out.print("... Ingrese solo opciones validas: ");
             opcion = sc.nextInt();
         }
-        switch(opcion){
+        switch (opcion) {
             case 1: //ELFOS
                 System.out.print("¿Contara con un arma?[Si/No]: ");
                 respuesta = sc.next();
                 if (respuesta.equalsIgnoreCase("Si")) {
-                    p.integrantes.add(new Raza("Elfo", "Si", nombre, apellido, altura, fecha, bestia, 0, 0, 0, vida));
-                }else{
-                    p.integrantes.add(new Raza("Elfo", "No", nombre, apellido, altura, fecha, bestia, 0,0,0, vida));
+                    p.integrantes.add(new Raza("Elfo", "Si", nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
+                } else {
+                    p.integrantes.add(new Raza("Elfo", "No", nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
                 }
                 System.out.println("  ¡Integrante añadido!  ");
                 break;
-                
+
             case 2://ENANOS
-                break;    
-                
+                break;
+
             case 3://Hobbits
                 System.out.print("¿Cuantos anillos tiene el hobbit?: ");
                 cantidad = sc.next();
-                p.integrantes.add(new Raza("Hobbit", cantidad, nombre, apellido, altura, fecha, bestia, 0,0,0, vida));
+                p.integrantes.add(new Raza("Hobbit", cantidad, nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
                 break;
-            case 4:
+            case 4://Humanos
+                System.out.print("¿Contara con un arma?[Si/No]: ");
+                respuesta = sc.next();
+                if (respuesta.equalsIgnoreCase("Si")) {
+                    String arma = "";
+                    System.out.print("¿Cual arma posera?\n"
+                            + "1. Espada\n"
+                            + "2. Lanza\n"
+                            + "3. Arco\n"
+                            + "Ingrear opcion: ");
+                    int opcion2 = sc.nextInt();
+                    while (opcion < 1 || opcion > 3) {
+                        System.out.print("... Ingrese solo opciones validas: ");
+                        opcion = sc.nextInt();
+                    }
+                    switch (opcion2) {
+                        case 1:
+                            arma = "Espada";
+                            break;
+                        case 2:
+                            arma = "Lanza";
+                            break;
+                        case 3:
+                            arma = "Arco";
+                            break;
+                    }
+                    p.integrantes.add(new Raza("Hombre", arma, nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
+                } else {
+                    p.integrantes.add(new Raza("Hombre", "", nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
+                }
+                System.out.println("  ¡Integrante añadido!  ");
                 break;
             case 5:
-                break;    
+                break;
         }
     }
 }
