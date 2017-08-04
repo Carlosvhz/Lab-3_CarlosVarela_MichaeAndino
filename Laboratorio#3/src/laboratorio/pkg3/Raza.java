@@ -62,12 +62,10 @@ public class Raza extends integrantes {
             this.curacion += 1;
             this.defensa += 100;
             this.poder += 10;
-            for (String string : accesorio) {
-                if (string.equals("Anillo")) {
-                    this.curacion += 40;
-                    this.defensa += 40;
-                    this.poder += 40;
-                }
+            for (int i = 0; i < Integer.parseInt(arma); i++) {
+                this.curacion += 40;
+                this.defensa += 40;
+                this.poder += 40;
             }
         }
         if (tipo.equals("Hombre")) {

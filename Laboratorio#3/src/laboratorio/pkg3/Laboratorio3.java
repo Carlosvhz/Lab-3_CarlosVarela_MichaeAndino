@@ -67,15 +67,16 @@ public class Laboratorio3 {
     }
     
     static public void añadir(){
-        String nombre, apellido, raza, respuesta;
+        String nombre, apellido, raza, respuesta, cantidad;
         int altura, garras, vida;
         Date fecha = new Date();
-        Bestia bestia;
+        Bestia bestia = new Bestia();
         System.out.print("... Añadiendo bestia\n"
                 + "- Ingrese numero de garras: ");
         garras = sc.nextInt();
         System.out.print("- Ingrese vida:");
         vida = sc.nextInt();
+        //Asignar bestia
         System.out.print("- Añadir nombre: ");
         nombre = sc.next();
         System.out.print("- Añadir apellido: ");
@@ -101,9 +102,9 @@ public class Laboratorio3 {
                 System.out.print("¿Contara con un arma?[Si/No]: ");
                 respuesta = sc.next();
                 if (respuesta.equalsIgnoreCase("Si")) {
-                    p.integrantes.add(new Raza("Elfo", "Si", nombre, apellido, altura, fecha, b, 0, 0, 0, vida));
+                    p.integrantes.add(new Raza("Elfo", "Si", nombre, apellido, altura, fecha, bestia, 0, 0, 0, vida));
                 }else{
-                    p.integrantes.add(new Raza("Elfo", "No", nombre, apellido, altura, fecha, b, 0,0,0, vida));
+                    p.integrantes.add(new Raza("Elfo", "No", nombre, apellido, altura, fecha, bestia, 0,0,0, vida));
                 }
                 System.out.println("  ¡Integrante añadido!  ");
                 break;
@@ -111,7 +112,10 @@ public class Laboratorio3 {
             case 2://ENANOS
                 break;    
                 
-            case 3://
+            case 3://Hobbits
+                System.out.print("¿Cuantos anillos tiene el hobbit?: ");
+                cantidad = sc.next();
+                p.integrantes.add(new Raza("Hobbit", cantidad, nombre, apellido, altura, fecha, bestia, 0,0,0, vida));
                 break;
             case 4:
                 break;
