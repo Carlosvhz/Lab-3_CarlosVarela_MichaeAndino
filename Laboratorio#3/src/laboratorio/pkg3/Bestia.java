@@ -1,7 +1,7 @@
 package laboratorio.pkg3;
 
-
 public class Bestia {
+
     protected int garras;
     protected boolean veneno;
     protected int vida;
@@ -38,5 +38,5 @@ public class Bestia {
     public void setVida(int vida) {
         this.vida = vida;
     }
-        
+
 }

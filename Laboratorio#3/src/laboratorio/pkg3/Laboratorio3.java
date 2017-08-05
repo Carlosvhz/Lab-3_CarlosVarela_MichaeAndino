@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package laboratorio.pkg3;
 
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- *
- * @author Elizabeth
- */
 public class Laboratorio3 {
 
     static int simulacion, opcion, altura, garras, vida;
@@ -21,11 +15,7 @@ public class Laboratorio3 {
     static Random rn = new Random();
     static String nombre, apellido, raza, respuesta, cantidad;
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        //DateFormat df = SimpleDateFormat("yyyy/MM/dd");
         do {
 
             System.out.print("______Lab#3_____\n"
@@ -74,18 +64,20 @@ public class Laboratorio3 {
         }
     }
 
-    static public void añadir() {
+    static public void añadir() throws ParseException {
         String nombre, apellido, raza, respuesta, cantidad;
         int altura, garras, vida;
         boolean venenoso = false;
-        Date fecha = new Date();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.print("Ingrese la fecha de nacimiento. dd/MM/yyyy ");
+        String date=sc.next();
+        Date fecha=df.parse(date);
         Bestia b = new Bestia();
         System.out.print("... Añadiendo bestia\n"
                 + "- Ingrese numero de garras: ");
         garras = sc.nextInt();
-        //Holis
         vida = rn.nextInt(101) + 50;
-        System.out.print("- Ingrese vida: "+vida);
+        System.out.print("- Ingrese vida: " + vida);
         System.out.print("- Sera venenoso? [s/n]:");
         while (sc.next().toLowerCase().charAt(0) == 's') {
             venenoso = true;
@@ -104,7 +96,7 @@ public class Laboratorio3 {
         }
         switch (tipo) {
             case 1:
-                Color c=Color.BLACK;
+                Color c = Color.BLACK;
                 System.out.print("¿Que color le dara al plumaje?\n"
                         + "1. Blanco\n"
                         + "2. Negro\n"
@@ -117,55 +109,55 @@ public class Laboratorio3 {
                 }
                 switch (color) {
                     case 1:
-                        c=Color.WHITE;
+                        c = Color.WHITE;
                         break;
                     case 2:
-                        c=Color.BLACK;
+                        c = Color.BLACK;
                         break;
                     case 3:
-                        c=Color.RED;
+                        c = Color.RED;
                         break;
                 }
-                b=new Aguilas(c, garras, venenoso, vida);
+                b = new Aguilas(c, garras, venenoso, vida);
                 break;
             case 2:
-                char sexo='b';
+                char sexo = 'b';
                 System.out.print("¿Que sexo tendra la araña?\n"
                         + "2. Masculino\n"
                         + "2. Femenino\n"
                         + "Ingrear opcion: ");
-                int arañon=sc.nextInt();
+                int arañon = sc.nextInt();
                 while (arañon < 1 || arañon > 2) {
                     System.out.print("... Ingrese solo opciones validas: ");
                     arañon = sc.nextInt();
                 }
                 switch (arañon) {
                     case 1:
-                        sexo='♂';
+                        sexo = '♂';
                         break;
                     case 2:
-                        sexo='♀';                        
+                        sexo = '♀';
                         break;
                 }
-                b=new Arañas(sexo, garras, venenoso, vida);
+                b = new Arañas(sexo, garras, venenoso, vida);
                 break;
             case 3:
-                boolean latigo=false;
+                boolean latigo = false;
                 System.out.print("Desea añadirle un latigo? [s/n]: ");
-                if (sc.next().toLowerCase().charAt(0)=='s') {
-                    latigo=true;
+                if (sc.next().toLowerCase().charAt(0) == 's') {
+                    latigo = true;
                 }
-                b=new Balrogs(latigo, garras, venenoso, vida);
+                b = new Balrogs(latigo, garras, venenoso, vida);
                 break;
             case 4:
                 System.out.print("Ingrese su velocidad m/s: ");
-                int velocidad=sc.nextInt();
-                b= new Aladas(velocidad, garras, venenoso, vida);
+                int velocidad = sc.nextInt();
+                b = new Aladas(velocidad, garras, venenoso, vida);
                 break;
             case 5:
                 System.out.print("Ingrese la longitud de alas: ");
-                int longitud=sc.nextInt();
-                b= new Dragones(longitud, garras, venenoso, vida);
+                int longitud = sc.nextInt();
+                b = new Dragones(longitud, garras, venenoso, vida);
                 break;
         }
         //Asignar bestia

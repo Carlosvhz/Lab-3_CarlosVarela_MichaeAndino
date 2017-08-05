@@ -1,16 +1,17 @@
 package laboratorio.pkg3;
 
-public class Arañas extends Bestia{
+public class Arañas extends Bestia {
+
     private char sexo;
 
     public Arañas() {
     }
-    
+
     public Arañas(char sexo, int garras, boolean veneno, int vida) {
         super(garras, veneno, vida);
         this.sexo = sexo;
-        if (sexo=='♀') {
-            this.vida=vida+50;
+        if (sexo == '♀') {
+            this.vida = vida + 50;
         }
     }
 
@@ -26,5 +27,5 @@ public class Arañas extends Bestia{
     public String toString() {
         return "Ara\u00f1as{" + "sexo=" + sexo + '}';
     }
-    
+
 }

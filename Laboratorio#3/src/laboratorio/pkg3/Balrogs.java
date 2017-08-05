@@ -1,6 +1,7 @@
 package laboratorio.pkg3;
 
-public class Balrogs extends Bestia{
+public class Balrogs extends Bestia {
+
     private boolean latigo;
 
     public Balrogs() {

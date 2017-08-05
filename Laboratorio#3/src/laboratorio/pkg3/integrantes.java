@@ -4,31 +4,33 @@
  * and open the template in the editor.
  */
 package laboratorio.pkg3;
+
 import java.util.*;
+
 /**
  *
  * @author carlo
  */
 public class integrantes {
+
     protected String nombre, apellido;
     protected int Altura;
     protected Date fecha;
     protected Bestia bestia;
     protected int poder, curacion, defensa, vida;
-    
-    
+
     public integrantes() {
     }
 
-    public integrantes(String nombre, String apellido, int Altura, Date fecha, Bestia bestia,  int poder, int curacion, int defensa, int vida) {
+    public integrantes(String nombre, String apellido, int Altura, Date fecha, Bestia bestia, int poder, int curacion, int defensa, int vida) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.Altura = Altura;
         this.fecha = fecha;
         this.bestia = bestia;
-        this.poder = poder+bestia.getVida();
-        this.curacion = curacion+bestia.getVida();
-        this.defensa = defensa+bestia.getVida();
+        this.poder = poder + bestia.getVida();
+        this.curacion = curacion + bestia.getVida();
+        this.defensa = defensa + bestia.getVida();
         this.vida = vida;
     }
 
@@ -70,7 +72,7 @@ public class integrantes {
 
     public void setBestia(Bestia bestia) {
         this.bestia = bestia;
-    }    
+    }
 
     public int getPoder() {
         return poder;

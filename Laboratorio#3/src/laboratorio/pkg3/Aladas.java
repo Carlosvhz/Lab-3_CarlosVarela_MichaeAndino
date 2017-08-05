@@ -1,7 +1,8 @@
 package laboratorio.pkg3;
 
-public class Aladas extends Bestia{
-   private int velocidad; 
+public class Aladas extends Bestia {
+
+    private int velocidad;
 
     public Aladas() {
     }

@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Pueblos {
-    
+
     ArrayList<integrantes> integrantes = new ArrayList();
-    
-    
 
     public ArrayList<integrantes> getIntegrantes() {
         return integrantes;
@@ -15,5 +13,5 @@ public class Pueblos {
 
     public void setIntegrantes(Raza raza) {
         this.integrantes.add(raza);
-    }    
+    }
 }

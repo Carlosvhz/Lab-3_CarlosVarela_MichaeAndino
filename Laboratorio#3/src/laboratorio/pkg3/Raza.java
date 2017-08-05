@@ -3,37 +3,38 @@ package laboratorio.pkg3;
 import java.util.*;
 
 public class Raza extends integrantes {
-    
+
     private String tipo, arma;
     private ArrayList<String> accesorio = new ArrayList();
     private Raza hermano;
     private boolean hermanoya;
+
     public Raza() {
     }
-    
+
     public Raza(String tipo, String arma, String nombre, String apellido, int Altura, Date fecha, Bestia bestia, int poder, int curacion, int defensa, int vida) {
         super(nombre, apellido, Altura, fecha, bestia, poder, curacion, defensa, vida);
         this.tipo = tipo;
         this.arma = arma;
         AsignarAtributosBasicos();
     }
-    
+
     public void setArma(String arma) {
         this.arma = arma;
     }
-    
+
     public void setAccesorio(String accesorio) {
         this.accesorio.add(accesorio);
     }
-    
+
     public String getTipo() {
         return tipo;
     }
-    
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
+
     public void AsignarAtributosBasicos() {
         if (tipo.equals("Elfo")) {
             curacion += 335;
@@ -74,20 +75,20 @@ public class Raza extends integrantes {
             this.poder += 150;
             if (arma.equals("Espada")) {
                 this.poder += 150;
-            }else if (arma.equals("Lanza")){
+            } else if (arma.equals("Lanza")) {
                 this.poder += 100;
-            }else if(arma.equals("arco")){
+            } else if (arma.equals("arco")) {
                 this.poder += 100;
             }
         }
         if (tipo.equals("Maiar")) {
             if (accesorio.get(0).equals("Sombrero")) {
-                this.curacion+=200;
-                this.poder+=200;
+                this.curacion += 200;
+                this.poder += 200;
             }
             if (arma.equals("Baston")) {
-                this.curacion+=250;
-                this.poder+=200;                
+                this.curacion += 250;
+                this.poder += 200;
             }
         }
     }

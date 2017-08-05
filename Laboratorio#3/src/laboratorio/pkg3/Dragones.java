@@ -1,6 +1,7 @@
 package laboratorio.pkg3;
 
-public class Dragones extends Bestia{
+public class Dragones extends Bestia {
+
     private int longitud;
 
     public Dragones() {
