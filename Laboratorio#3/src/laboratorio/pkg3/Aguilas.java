@@ -24,6 +24,6 @@ public class Aguilas extends Bestia {
 
     @Override
     public String toString() {
-        return "Aguilas{" + "plumajae=" + plumajae + '}';
+        return "Aguilas";
     }
 }

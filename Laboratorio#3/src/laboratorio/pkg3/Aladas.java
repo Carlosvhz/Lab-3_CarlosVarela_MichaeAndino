@@ -19,4 +19,10 @@ public class Aladas extends Bestia {
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
+
+    @Override
+    public String toString() {
+        return "Aladas";
+    }
+    
 }

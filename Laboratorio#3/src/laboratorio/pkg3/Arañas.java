@@ -25,7 +25,7 @@ public class Arañas extends Bestia {
 
     @Override
     public String toString() {
-        return "Ara\u00f1as{" + "sexo=" + sexo + '}';
+        return "Arañf1as";
     }
 
 }

@@ -92,4 +92,18 @@ public class Raza extends integrantes {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return nombre + " " +apellido 
+                + "\n     Rasa: " + tipo
+                + "\n     Altura: " + Altura
+                + "\n     Fecha de Nacimiento: " + fecha
+                + "\n     Bestia: " + bestia.toString()
+                + "\n     Poder de Vida: " + vida
+                + "\n     Poder de Ataque: " + poder
+                + "\n     Poder de Defensa: " + defensa
+                + "\n     Poder de Curacion: " + curacion
+                + "\n     Poder de Curacion: " + curacion + "\n";
+    }
 }

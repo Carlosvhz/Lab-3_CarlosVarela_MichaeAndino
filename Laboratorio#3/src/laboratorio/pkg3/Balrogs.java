@@ -22,6 +22,6 @@ public class Balrogs extends Bestia {
 
     @Override
     public String toString() {
-        return "Balrogs{" + "latigo=" + latigo + '}';
+        return "Balrogs";
     }
 }

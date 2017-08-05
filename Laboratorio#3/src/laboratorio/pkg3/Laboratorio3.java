@@ -15,7 +15,7 @@ public class Laboratorio3 {
     static Random rn = new Random();
     static String nombre, apellido, raza, respuesta, cantidad;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         do {
 
             System.out.print("______Lab#3_____\n"
@@ -24,14 +24,15 @@ public class Laboratorio3 {
                     + "3. Modificar integrantes\n"
                     + "4. Iniciar Simulación pueblos\n"
                     + "5. Iniciar Simulación Lugares\n"
-                    + "6. Salir\n"
+                    + "6. Listar Integrantes\n"
+                    + "7. Salir\n"
                     + "Ingrese opcion: ");
             opcion = sc.nextInt();
             menu(opcion);
         } while (opcion < 6);
     }
 
-    static public void menu(int simulacion) {
+    static public void menu(int simulacion) throws ParseException {
         switch (opcion) {
             case 1:
                 System.out.println("-- Añadir integrantes --");
@@ -61,6 +62,8 @@ public class Laboratorio3 {
             case 5:
                 System.out.println("... No realizado :(");
                 break;
+            case 6:
+                System.out.println(p.integrantes.toString());
         }
     }
 
@@ -68,18 +71,18 @@ public class Laboratorio3 {
         String nombre, apellido, raza, respuesta, cantidad;
         int altura, garras, vida;
         boolean venenoso = false;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.print("Ingrese la fecha de nacimiento. dd/MM/yyyy ");
-        String date=sc.next();
-        Date fecha=df.parse(date);
         Bestia b = new Bestia();
         System.out.print("... Añadiendo bestia\n"
                 + "- Ingrese numero de garras: ");
         garras = sc.nextInt();
+        while (garras<1||garras>6) {
+            System.out.println("Numero Invalido");
+            garras = sc.nextInt();
+        }
         vida = rn.nextInt(101) + 50;
-        System.out.print("- Ingrese vida: " + vida);
+        System.out.print("- Ingrese vida: " + vida+"\n");
         System.out.print("- Sera venenoso? [s/n]:");
-        while (sc.next().toLowerCase().charAt(0) == 's') {
+        if (sc.next().toLowerCase().charAt(0) == 's') {
             venenoso = true;
         }
         System.out.print("¿Que raza sera su integrante?\n"
@@ -167,8 +170,10 @@ public class Laboratorio3 {
         apellido = sc.next();
         System.out.print("- Añadir altura: ");
         altura = sc.nextInt();
-        System.out.print("- Añadir fecha: \n");
-
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.print("Ingrese la fecha de nacimiento. dd/MM/yyyy ");
+        String date=sc.next();
+        Date fecha=df.parse(date);
         System.out.print("¿Que raza sera su integrante?\n"
                 + "1. Elfo\n"
                 + "2. Enano\n"
